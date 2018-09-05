@@ -23,9 +23,14 @@ import org.springframework.jndi.JndiObjectFactoryBean;
 
 @Configuration
 @ComponentScan(basePackages = "pe.com.aqsoft.*")
-//@PropertySource(value = { "classpath:application.properties" })
-@PropertySource({ "classpath:com/javaetmoi/sample/config/datasource.properties" })
+@PropertySource(value = { "classpath:application.properties" })
+//@PropertySource({ "classpath:com/javaetmoi/sample/config/datasource.properties" })
 public class ApplicationConfig {
+	
+	
+//	public static void main(String[] args) {
+//		SpringApplication.run(ApplicationConfig.class, args);
+//    }
 	
 	@Autowired
     private Environment env;

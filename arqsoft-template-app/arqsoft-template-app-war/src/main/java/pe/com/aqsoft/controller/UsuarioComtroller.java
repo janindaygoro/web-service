@@ -1,4 +1,4 @@
-package pe.com.arqsoft.controller;
+package pe.com.aqsoft.controller;
 
 import java.util.Locale;
 
