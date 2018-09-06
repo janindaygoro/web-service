@@ -6,6 +6,9 @@
     version="1.0">
 
     <virtual-host name="default_host" />
+    
+<!--     <resource-ref name="jdbc/ds_oracle_fn_db" binding-name="jdbc/ds_oracle_fn_db" /> -->
+    <resource-ref name="jdbc/jndiDataSource" binding-name="jdbc/jndiDataSource" />
 
 
 </web-bnd>

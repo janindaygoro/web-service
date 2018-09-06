@@ -9,6 +9,12 @@ package pe.com.aqsoft.config;
 
 import javax.sql.DataSource;
 
+import java.sql.SQLException;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -36,20 +42,33 @@ public class ApplicationConfig {
     private Environment env;
 
     @Bean
-    @Profile("javaee")
     public JndiObjectFactoryBean dataSource() throws IllegalArgumentException {
         JndiObjectFactoryBean dataSource = new JndiObjectFactoryBean();
         dataSource.setExpectedType(DataSource.class);
-        dataSource.setJndiName(env.getProperty("jdbc.jndiDataSource"));
-        System.out.println("=========Base de datos conectada=============  "+env.getProperty("jdbc.jndiDataSource"));
+        dataSource.setJndiName("jdbc/jndiDataSource");
+        System.out.println("=========Base de datos conectada=============  "+dataSource.getJndiName());
         return dataSource;
     }
+    
+    @Bean(name ="dbDataSource")
+	public DataSource fnDataSource() {
+		Context objContext;
+		DataSource objDatasource = null;
+		try {
+			objContext = new InitialContext();
+//			objDatasource = (DataSource) objContext.lookup("java:comp/env/jdbc/ds_oracle_fn_db");
+			objDatasource = (DataSource) objContext.lookup("java:comp/env/jdbc/jndiDataSource");
+			
+			System.out.println("-----> " + objDatasource.getConnection().isClosed());
+		} catch (NamingException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			System.out.println(" --- "+e.getMessage());
+			e.printStackTrace();
+		}
+		return objDatasource;
+	}
 
-    @Bean
-    @Profile("test")
-    public DataSource testDataSource() {
-        return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2).build();
-    }
 	
 	@Bean
 	public static PropertySourcesPlaceholderConfigurer propertyConfigInDev() {
