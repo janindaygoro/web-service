@@ -20,9 +20,12 @@ public class ApplicationInitializer implements WebApplicationInitializer {
 		AnnotationConfigWebApplicationContext objDispatcherContext = new AnnotationConfigWebApplicationContext();
 		objDispatcherContext.register(ApplicationConfig.class);
 		System.out.println("---------------------Iniciando------------------------------");
+		objDispatcherContext.setServletContext(servletContext);
 		ServletRegistration.Dynamic objDispatcher = servletContext.addServlet("dispatcher",
 				new DispatcherServlet(objDispatcherContext));
+		objDispatcher.addMapping("/"); 
 		objDispatcher.setLoadOnStartup(1);
+
 	}
 
 }

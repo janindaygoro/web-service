@@ -41,7 +41,7 @@ public class ApplicationConfig {
         JndiObjectFactoryBean dataSource = new JndiObjectFactoryBean();
         dataSource.setExpectedType(DataSource.class);
         dataSource.setJndiName(env.getProperty("jdbc.jndiDataSource"));
-        System.out.println("=========Base de datos conectada=============");
+        System.out.println("=========Base de datos conectada=============  "+env.getProperty("jdbc.jndiDataSource"));
         return dataSource;
     }
 

@@ -11,5 +11,5 @@ public interface ProductoMapper {
 
 	  List<ProductoModel> traerTodos();
 
-	  List<CategoriaModel> traerCategorias();
+//	  List<CategoriaModel> traerCategorias();
 }

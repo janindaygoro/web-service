@@ -11,22 +11,22 @@ import pe.com.aqsoft.dao.ProductoMapper;
 import pe.com.aqsoft.model.CategoriaModel;
 import pe.com.aqsoft.model.ProductoModel;
 
-@Service
+//@Service
 public class ProductoService {
-	@Autowired
-	  private ProductoMapper productoMapper;
-
-	  public List<ProductoModel> traerTodos() {
-	    return productoMapper.traerTodos();
-	  }
-
-	  @Transactional(propagation = Propagation.REQUIRES_NEW)
-	  public void insertar(ProductoModel productoBean) {
-	    productoMapper.insertar(productoBean);
-	  }
-
-	  public List<CategoriaModel> traerCategorias() {
-	    return productoMapper.traerCategorias();
-	  }
+	
+//	  private ProductoMapper productoMapper;
+//
+//	  public List<ProductoModel> traerTodos() {
+//	    return productoMapper.traerTodos();
+//	  }
+//
+//	  @Transactional(propagation = Propagation.REQUIRES_NEW)
+//	  public void insertar(ProductoModel productoBean) {
+//	    productoMapper.insertar(productoBean);
+//	  }
+//
+//	  public List<CategoriaModel> traerCategorias() {
+//	    return productoMapper.traerCategorias();
+//	  }
 
 }

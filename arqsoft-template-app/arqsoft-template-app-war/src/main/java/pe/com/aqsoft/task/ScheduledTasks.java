@@ -18,7 +18,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 @Component
-@EnableScheduling
+//@EnableScheduling
 public class ScheduledTasks {
 	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 
@@ -33,7 +33,7 @@ public class ScheduledTasks {
 
 	private Logger logger = Logger.getLogger(ScheduledTasks.class);
 
-	@Scheduled(fixedRate = 5000)
+	@Scheduled(fixedRate = 500000)
 	public void reportCurrentTime() {
 		String[] beanNames = applicationContext.getBeanDefinitionNames();
 		for (String beanName : beanNames) {
